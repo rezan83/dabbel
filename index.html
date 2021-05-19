@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="menu-icon">
+        <span> &#9776;</span>
+      </div>
+      <header class="header">
+        <div class="header_left show_desktop">
+          <span class="iconify" data-icon="feather-calendar" data-inline="false"></span>
+         <span class="iconify" data-icon="feather-mail" data-inline="false"></span>
+          <span class="iconify" data-icon="feather-star" data-inline="false"></span>
+        </div>
+        <div class="header_right">
+
+          <div class="header_right_icons">
+            <span class="iconify" data-icon="feather-search" data-inline="false"></span>
+            <div ng-click="toggleCart()" class="cart-icon" ng-controller="CartIcon">
+              <span
+                class="iconify"
+                data-icon="feather-shopping-cart"
+                data-inline="false"
+              ></span>
+              <span ng-if="counter()" class="circle cart-counter">{{ counter() }}</span>
+              
+              <div ng-controller="CartForm">
+              <div ng-if="showCart" class="cart-pop" >
+                <div class="flex-row">
+                  <h3>My Cart</h3>
+                  <div class="cart-items">{{ counter() }} Items</div>
+                </div>
+                <div class="flex-column">
+                  <div class="grid-row" ng-repeat="item in items">
+                    <div class="item-name">{{item.name}}</div>
+                    <div class="flex-row item-number">
+                      <span class="btn cart-click" ng-click="increase($event,item);">+</span>
+                      <div class="qty">{{item.count}}</div>
+                      <span class="btn cart-click" ng-click="decrease($event,item)">-</span>
+                    </div>
+
+                    <div class="item-total">{{item.count * item.price | currency}}</div>
+
+                    <span class="cart-remove cart-click" href ng-click="removeItem($event,$index)"
+                      >X</span
+                    >
+                  </div>
+
+                  <div class="flex-row">
+                    <div>Total:</div>
+                    <div class="total-number">{{total() | currency}}</div>
+                  </div>
+                  <button class="cart-click" ng-click="checkout($event)">checkout</button>
+                </div>
+              </div>
+              </div>
+            </div>
+            
+            <span class="iconify" data-icon="feather-bell" data-inline="false"></span>
+          </div>
+
+          <div class="header_avatar hide_mobile">
+            <div>Mr Anderson</div>
+            <div>The One</div>
+          </div>
+          
+        </div>
+      </header>
+      <aside class="aside">
+        <div class="aside_close-icon hide_desktop">
+          <span>&times;</span>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">
+            <div class="droptitle">
+              <span
+                class="iconify"
+                data-icon="feather-home"
+                data-inline="false"
+              ></span>
+
+              <h5>Home</h5>
+            </div>
+
+            <span
+              class="iconify"
+              data-icon="ic:outline-keyboard-arrow-down"
+              data-inline="false"
+            ></span>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <div class="card_title category">CATEGORY 1</div>
+        <ul class="aside_list">
+          <li class="aside_list-item">Menu item1</li>
+          <li class="aside_list-item">Menu item2</li>
+          <li class="aside_list-item">Menu item3</li>
+          <li class="aside_list-item">Menu item4</li>
+          <li class="aside_list-item">Menu item5</li>
+        </ul>
+        <div class="card_title category">CATEGORY 2</div>
+        <ul class="aside_list">
+          <li class="aside_list-item">Menu item1</li>
+          <li class="aside_list-item">Menu item2</li>
+          <li class="aside_list-item">Menu item3</li>
+        </ul>
+      </aside>
+      <main class="main">
+        <div class="main_overview">
+          <div class="overview_card">
+            <div class="card_header">
+              <div class="card_title">Title</div>
+            </div>
+            <p class="card_text">
+              text Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Quis, expedita dolor? Aut,est reiciendis placeat numquam?
+            </p>
+          </div>
+          <div class="overview_card overview_card_circles grow_2">
+            <div class="card_header">
+              <div class="card_title">Title</div>
+              <div class="card_secondary_title">secondary title</div>
+            </div>
+            <div class="card_circles">
+              <div class="circle">img1</div>
+              <div class="circle">img2</div>
+              <div class="circle">img3</div>
+              <div class="circle">img4</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="main_cards">
+          <div class="tripod_group">
+            <div class="tripod_card"></div>
+            <div class="tripod_card"></div>
+            <div class="tripod_card grid_grow_2"></div>
+          </div>
+
+          <div class="card centered_text grow_2">
+            <p>Lorem centered text!</p>
+          </div>
+        </div>
+
+        <div class="secondary_cards">
+          <div class="card">Card</div>
+          <div class="card hide_mobile">Card</div>
+        </div>
+      </main>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"
+      integrity="sha512-d0VvI/6jhj3RXE8+f0G7KDZIBXH/atpouQVCa+IBweFWUGy+B+qEbucPlstQO8yTLIu0XTfx9xqks7/DyDlZng=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
