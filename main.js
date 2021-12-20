@@ -19,14 +19,15 @@ asideClose.addEventListener("click", function () {
 });
 
 function CartIcon($rootScope, $scope) {
+//      $event.stopPropagation();
   $rootScope.showCart = false;
   $scope.toggleCart = function () {
     $rootScope.showCart = !$rootScope.showCart;
   console.log($rootScope.showCart);
   };
 }
-function CartForm($rootScope, $scope, $http) {
 
+function CartForm($rootScope, $scope, $http) {
 
   $scope.items = [
     {

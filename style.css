@@ -197,8 +197,8 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 0.8em;
-  transform: translate(-400px, 0px);
-  width: 450px;
+  transform: translate(-230px, 0px);
+  width: calc(325px + 5vw);
   background-color: var(--forground-color);
   padding: 5px;
   border-radius: 4px;
@@ -246,15 +246,11 @@ body {
   border: solid 1px gray;
   border-radius: 4px;
 }
-.grid-row .cart-remove {
-  visibility: hidden;
-}
+
 .grid-row:hover {
   background-color: var(--background-color);
 }
-.grid-row:hover .cart-remove {
-  visibility: visible;
-}
+
 .cart-remove {
   transform: translate(20px, 0px);
 }
@@ -349,10 +345,10 @@ body {
 .aside_close-icon {
   position: relative;
   visibility: visible;
-  transform: translate(230px, 20px);
-  font-size: 16px;
-  width: 20px;
-  height: 20px;
+  transform: translate(210px, 0px);
+  font-size: 36px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   z-index: 20;
 }
@@ -459,4 +455,10 @@ body {
   .hide_desktop {
     display: none;
   }
+	.grid-row .cart-remove {
+	visibility: hidden;
+	}
+	.grid-row:hover .cart-remove {
+	  visibility: visible;
+	}
 }
